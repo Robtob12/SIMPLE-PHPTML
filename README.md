@@ -1,9 +1,9 @@
 # Modules.mod.php
 
-Mini librería PHP de funciones rápidas para HTML, formularios, utilidades visuales, seguridad y helpers JavaScript.
+Mini librería PHP con funciones rápidas para HTML, formularios, utilidades visuales, seguridad y helpers JavaScript.
 
-> Archivo principal: `Modules.mod.php`
-> Versión: `1.0.0`
+**Archivo principal:** `Modules.mod.php`
+**Versión:** `1.0.0`
 
 ---
 
@@ -11,27 +11,25 @@ Mini librería PHP de funciones rápidas para HTML, formularios, utilidades visu
 
 ## Método 1 — Git Clone
 
-```bash id="m1xjv9"
+```bash
 git clone https://github.com/TUUSUARIO/modules-mod.git
 ```
 
 Luego incluye el archivo en tu proyecto:
 
-```php id="7j2nfp"
+```php
 require_once("modules-mod/Modules.mod.php");
 ```
 
----
-
 ## Método 2 — Descargar ZIP
 
-1. Abre tu repositorio en GitHub
-2. Pulsa **Code**
-3. Selecciona **Download ZIP**
-4. Extrae la carpeta
+1. Abre el repositorio en GitHub.
+2. Haz clic en **Code**.
+3. Selecciona **Download ZIP**.
+4. Extrae la carpeta.
 5. Incluye el archivo:
 
-```php id="g3m0yy"
+```php
 require_once("modules-mod/Modules.mod.php");
 ```
 
@@ -39,7 +37,7 @@ require_once("modules-mod/Modules.mod.php");
 
 # Inicio rápido
 
-```php id="n1i9wb"
+```php
 <?php
 require_once("Modules.mod.php");
 
@@ -48,325 +46,242 @@ VERSION();
 
 echo BOLD("Hola mundo");
 echo INPUT("text", "user", ["id","usuario"], "Tu nombre");
-?>
 ```
 
 ---
 
 # Funciones disponibles
 
----
+## Sistema
 
-# Sistema
-
-## INIT()
+### INIT()
 
 Comprueba que el módulo está activo.
 
-```php id="q0wz8m"
-INIT();
-```
-
-Salida:
-
-```text id="7j6qok"
-Activo
-```
-
----
-
-## VERSION()
+### VERSION()
 
 Muestra la versión actual.
 
-```php id="1d5nlg"
-VERSION();
-```
-
-Salida:
-
-```text id="bh4v7k"
-Modules.mod.php v1.0.0
-```
-
 ---
 
-# Texto y formato
+## Texto y formato
 
-## BOLD()
+### BOLD()
 
 Texto en negrita.
 
-```php id="3g8hkr"
-echo BOLD("Hola");
-```
-
-Resultado:
-
-```html id="1y1apd"
-<strong>Hola</strong>
-```
-
----
-
-## ITAL()
+### ITAL()
 
 Texto en cursiva.
 
-```php id="q4k7fi"
-echo ITAL("Hola");
-```
-
----
-
-## UNDER()
+### UNDER()
 
 Texto subrayado.
 
-```php id="e6b5vw"
-echo UNDER("Hola");
-```
-
----
-
-## FONT()
+### FONT($text, $font)
 
 Texto con fuente personalizada.
 
-```php id="2v59yy"
-echo FONT("Hola Mundo", "Arial");
-```
-
-Resultado:
-
-```html id="6q4x88"
-<span class="FONT" style="font-family:Arial;">Hola Mundo</span>
-```
-
 ---
 
-# Listas y enlaces
+## HTML Helpers
 
-## INLIST()
-
-Crear listas HTML.
-
-### Lista desordenada
-
-```php id="6xb5vq"
-echo INLIST("ul", ["PHP", "JS", "CSS"]);
-```
-
-### Lista ordenada
-
-```php id="qtv2jt"
-echo INLIST("ol", ["Uno", "Dos", "Tres"]);
-```
-
----
-
-## ANCORA()
+### A($href, $text, $target)
 
 Crear enlaces.
 
-```php id="myh7oa"
-echo ANCORA("https://google.com", "Google");
-```
+### H1($text, $class)
 
-Abrir misma pestaña:
+Título H1.
 
-```php id="5sbr6h"
-echo ANCORA("index.php", "Inicio", "_self");
+### DIV($content, $class)
+
+Contenedor div.
+
+### SPAN($class, $content)
+
+Etiqueta span.
+
+### BUTTON($text, $onclick, $class)
+
+Botón HTML.
+
+### IMG($src, $class, $alt)
+
+Imagen.
+
+### INLIST($type, $items)
+
+Listas `ul` / `ol`.
+
+---
+
+## Formularios
+
+### INPUT($type, $name, $attrs, $placeholder, $value)
+
+Genera inputs dinámicos.
+
+Ejemplo:
+
+```php
+echo INPUT("email", "correo", ["class","campo"], "Correo");
 ```
 
 ---
 
-# Formularios
+## Componentes visuales
 
-## INPUT()
+### CLOCK($class = "")
 
-Generar inputs dinámicos.
+Reloj en tiempo real. La clase CSS es opcional para estilizarlo.
 
-```php id="yyz3x3"
-echo INPUT(
-    "text",
-    "usuario",
-    ["id","inputUser"],
-    "Escribe tu nombre"
-);
-```
-
-Resultado:
-
-```html id="q4z8qe"
-<input type="text" name="usuario" id="inputUser" placeholder="Escribe tu nombre">
-```
-
-Con clase:
-
-```php id="j2tch2"
-echo INPUT("email","correo",["class","campo"],"Correo");
+```php
+CLOCK("mi-reloj");
 ```
 
 ---
 
-## BTN()
+## Seguridad
 
-Generar botones.
+### HTML($text)
 
-```php id="oq7zjj"
-echo BTN(
-    "button",
-    "btn",
-    ["id","enviar"],
-    "Enviar",
-    "alert('Hola')"
-);
-```
+Escapa caracteres especiales.
 
-Resultado:
+### AUTH_EMAIL($email)
 
-```html id="4jrzfh"
-<button type="button" id="enviar" onclick="alert('Hola')">
-Enviar
-</button>
-```
+Valida formato de email.
 
----
-
-# Componentes visuales
-
-## CLOCK()
-
-Reloj digital en tiempo real.
-
-```php id="nxyg8m"
-CLOCK();
-```
-
-Personalizado:
-
-```php id="5mb6km"
-CLOCK("black", "white", "300px", "20px", "15px");
-```
-
-Incluye:
-
-* Hora actual
-* Actualización automática
-* Zona horaria detectada
-
----
-
-# Seguridad
-
-## HTML()
-
-Convierte caracteres especiales.
-
-```php id="e6gk1e"
-echo HTML("<script>");
-```
-
-Resultado:
-
-```text id="t9vq9q"
-&lt;script&gt;
-```
-
----
-
-## AUTH_EMAIL()
-
-Validar email real.
-
-```php id="p2o6l6"
-if (AUTH_EMAIL("correo@gmail.com")) {
-    echo "Email válido";
-}
-```
-
----
-
-# Contraseñas
-
-## HASTD()
+### HASTD($password)
 
 Hash con algoritmo por defecto.
 
-```php id="bn6f0m"
-$hash = HASTD("123456");
-```
-
----
-
-## HASTB()
+### HASTB($password)
 
 Hash con bcrypt.
 
-```php id="3mghrk"
-$hash = HASTB("123456");
-```
+---
+
+## Navegación / JavaScript
+
+### GO($url)
+
+Redirección HTTP.
+
+### ALERT($msg)
+
+Muestra `alert()`.
+
+### CONSOLE($data)
+
+Envía datos a `console.log()`.
+
+### RELOAD()
+
+Recarga la página.
 
 ---
 
-# Navegación
+## Utilidades
 
-## GO()
+### TODAY()
 
-Redirección.
+Fecha actual `Y-m-d`.
 
-```php id="g6m0z9"
-GO("home.php");
-```
+### RANDOM($min, $max)
 
----
+Número aleatorio seguro.
 
-# JavaScript Helpers
+### LOREM($target)
 
-## ALERT()
-
-```php id="sz1o9d"
-ALERT("Bienvenido");
-```
+Genera texto lorem ipsum.
 
 ---
 
-## CONSOLE()
+## Matemáticas
 
-```php id="6dzw8j"
-CONSOLE("Debug activo");
+### OF($percent, $number)
+
+Obtiene un porcentaje de un número.
+
+### EVEN($n)
+
+Detecta si un número es par.
+
+### PRIME($n)
+
+Detecta si un número es primo.
+
+---
+
+## Finanzas
+
+### INTSIMPLE($capital, $rate, $time)
+
+Interés simple.
+
+### AMOSIMPLE($capital, $rate, $time)
+
+Monto con interés simple.
+
+### INTCOMPOUND($capital, $rate, $time)
+
+Interés compuesto.
+
+### PROFIT($income, $cost)
+
+Ganancia neta.
+
+### DISCOUNT($price, $percent)
+
+Aplicar descuento.
+
+### TAX($price, $percent)
+
+Aplicar impuesto.
+
+### SAVEMONEY($goal, $months)
+
+Ahorro mensual necesario.
+
+---
+
+## Router
+
+### ROUTER($routes, $notFound)
+
+Router simple basado en rutas.
+
+```php
+ROUTER([
+  "/" => "pages/home.php",
+  "/about" => "pages/about.php"
+], "404.php");
 ```
 
 ---
 
 # Ejemplo completo
 
-```php id="b1n3e7"
+```php
 <?php
 require_once("Modules.mod.php");
 
-INIT();
-VERSION();
-
-echo BOLD("Hola");
-echo FONT(" Mundo", "Verdana");
-
-echo INPUT("text","user",["id","usuario"],"Nombre");
-echo BTN("button","",["id","btn"],"Enviar","alert('OK')");
-
-CLOCK();
-?>
+echo H1("Hola");
+echo DIV(BOLD("Bienvenido"), "box");
+echo INPUT("text", "user", ["id","usuario"], "Nombre");
+echo BUTTON("Enviar", "alert('OK')", "btn");
+CLOCK("clock");
 ```
 
 ---
 
 # Estructura del proyecto
 
-```text id="o3b4f6"
+```text
 modules-mod/
-│── modules.mod.php
-│── README.md
+├── Modules.mod.php
+└── README.md
 ```
 
 ---
@@ -375,14 +290,13 @@ modules-mod/
 
 * SELECT()
 * TEXTAREA()
-* IMG()
 * TABLE()
 * CARD()
 * MODAL()
-* Router simple
 * CSRF Token
-* Sistema de temas
 * Composer package
+* Themes
+* CLI installer
 
 ---
 
@@ -394,4 +308,4 @@ MIT
 
 # Autor
 
-Creado como librería modular PHP para acelerar proyectos rápidos.
+Librería modular PHP para acelerar proyectos rápidos.
