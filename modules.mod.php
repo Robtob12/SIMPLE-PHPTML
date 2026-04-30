@@ -129,11 +129,11 @@ function INLIST($type = "ul", $items = []): string{
    TAGS HTML
 ========================= */
 
-function A($arg = "#", $text = "Link-php-template", $target = "_blank"): string{
+function A($arg = "#", $text = "Link-php-template", $class= "", $target = "_blank"): string{
 
     $target = ($target === "_blank") ? "_blank" : "_self";
 
-    return "<a href='$arg' target='$target'>$text</a>";
+    return "<a href='$arg' class='$class' target='$target'>$text</a>";
 }
 
 function H1($text = '', $class = ''): string{
@@ -175,7 +175,13 @@ function BR(){
     return '<br>';
 }
 
+/* =========================
+   CSS
+========================= */
 
+function CSS($arg = ''){
+    echo "<link rel='stylesheet' href='$arg'>";
+}
 
 /* =========================
    LOREM
