@@ -10,74 +10,13 @@
 ========================= */
 
 function INIT(){
-    echo "Activo";
+    echo "Servicio activo :)\n";
 }
 
 function VERSION(){
-    echo "Modules.mod.php v1.2.4t";
-}
-
-function HELP(){
-
-    $groups = [
-
-        "INFO" => [
-            "INIT","VERSION","HELP"
-        ],
-
-        "TEXT" => [
-            "BOLD","ITAL","UNDER","FONT","LOREM","HTML"
-        ],
-
-        "HTML" => [
-            "A","H1","INPUT","BUTTON","IMG","SPAN","DIV","INLIST"
-        ],
-
-        "JS / NAV" => [
-            "ALERT","CONSOLE","GO","RELOAD","CLOCK"
-        ],
-
-        "DATABASE" => [
-            "CPDO"
-        ],
-
-        "DATE / TIME" => [
-            "TODAY"
-        ],
-
-        "MATH" => [
-            "RANDOM","OF","EVEN","PRIME"
-        ],
-
-        "FINANCE" => [
-            "INTSIMPLE","AMOSIMPLE","INTCOMPOUND",
-            "PROFIT","DISCOUNT","TAX","SAVEMONEY"
-        ],
-
-        "SYSTEM" => [
-            "ROUTER","HELP"
-        ],
-
-        "SECURITY" => [
-            "AUTH_EMAIL","HASTD","HASTB"
-        ]
-
-    ];
-
-    foreach($groups as $category => $functions){
-
-        echo "<h3>$category</h3>";
-
-        foreach($functions as $fn){
-
-            if(function_exists($fn)){
-                echo strtoupper($fn) . "();<br>";
-            }
-
-        }
-
-        echo "<br>";
-    }
+    echo "Remote: https://github.com/Robtob12/Module-PHP-Mods \n";
+    echo "Author: Robtob12 - </Scripter> \n";
+    echo "Version: Modules.mod.php v1.2.4t \n";
 }
 
 /* =========================
@@ -104,16 +43,12 @@ function FONT($text = "Function FONT", $font = "serif"): string{
    LISTAS
 ========================= */
 
-function INLIST($type = "ul", $items = []): string{
+function INLIST($class = '', $type = "ul", $items = []): string{
 
     $type = strtolower($type);
 
     if ($type !== "ul" && $type !== "ol") {
         $type = "ul";
-    }
-
-    if (empty($items)) {
-        return "<$type></$type>";
     }
 
     $html = "";
@@ -122,29 +57,49 @@ function INLIST($type = "ul", $items = []): string{
         $html .= "<li>$item</li>";
     }
 
-    return "<$type>$html</$type>";
+    return "<$type class='$class'>$html</$type>";
 }
 
 /* =========================
    TAGS HTML
 ========================= */
 
-function A($arg = "#", $text = "Link-php-template", $class= "", $target = "_blank"): string{
+function A($class= "", $arg = "#", $text = "Link-php-template", $target = "_blank"): string{
 
     $target = ($target === "_blank") ? "_blank" : "_self";
 
     return "<a href='$arg' class='$class' target='$target'>$text</a>";
 }
 
-function H1($text = '', $class = ''): string{
+function H1($class = '', $text = ''): string{
     return "<h1 class='$class'>$text</h1>";
 }
 
-function P($text = '', $class = ''): string{
+function H2($class = '', $text = ''): string{
+    return "<h2 class='$class'>$text</h2>";
+}
+
+function H3($class = '', $text = ''): string{
+    return "<h3 class='$class'>$text</h3>";
+}
+
+function H4($class = '', $text = ''): string{
+    return "<h4 class='$class'>$text</h4>";
+}
+
+function H5($class = '', $text = ''): string{
+    return "<h5 class='$class'>$text</h5>";
+}
+
+function H6($class = '', $text = ''): string{
+    return "<h6 class='$class'>$text</h6>";
+}
+
+function P($class = '', $text = ''): string{
     return "<p class='$class'>$text</p>";
 }
 
-function INPUT($type = "text",$name = "",$ind = [],$plchldr = "",$value = ""): string{
+function INPUT($ind = [], $type = "text",$name = "", $plchldr = "",$value = ""): string{
 
     $attr = '';
 
@@ -155,8 +110,8 @@ function INPUT($type = "text",$name = "",$ind = [],$plchldr = "",$value = ""): s
     return "<input type='$type' name='$name' $attr placeholder='$plchldr' value='$value'>";
 }
 
-function BTN($text = "Button", $onclick = '', $class = ''): string{
-    return "<button onclick=\"$onclick\" class='$class'>$text</button>";
+function BTN($class = '', $text = "Button", $onclick = ''): string{
+    return "<button onclick='$onclick' class='$class'>$text</button>";
 }
 
 function IMG($src = '', $class = '', $alt = ''): string{
@@ -167,11 +122,23 @@ function SPAN($class = '', $content = ''): string{
     return "<span class='$class'>$content</span>";
 }
 
-function DIV($content = '', $class = ''): string{
+function DIV($class = '', $content = ''): string{
     return "<div class='$class'>$content</div>";
 }
 
-function BR(){
+function NAV($class = '', $content): string{
+    return "<nav class='$class'> $content</nav>";
+}
+
+function HERO($class = '', $content = ''): string{
+    return "<header class='$class'> $content </header>";
+}
+
+function SECTION($class = '', $content): string{
+    return "<section class='$class'> $content </section>";
+}
+
+function BR(): string{
     return '<br>';
 }
 
@@ -281,6 +248,11 @@ function CONSOLE($arg){
     echo "<script>console.log(" . json_encode($arg, JSON_UNESCAPED_UNICODE) . ");</script>";
 }
 
+function READ($msg = ''){
+    echo $msg;
+    return trim(fgets(STDIN));
+}
+
 function RELOAD($arg = null){
 
     if ($arg === "btn") {
@@ -354,6 +326,22 @@ function PRIME($n){
     return true;
 }
 
+function AREA($x, $y){
+    return $x * $y;
+}
+
+function CRICLE($r){
+    return (3.14**2) * $r;
+}
+
+function RADIO($d){
+    return $d / 2;
+}
+
+function DIAMETRO($r){
+    return $r**2;
+}
+
 /* =========================
    FINANZAS
 ========================= */
@@ -392,19 +380,122 @@ function SAVEMONEY($goal, $months){
 
 function ROUTER($routes = [], $notFound = null){
 
+    $baseDir = realpath(__DIR__ . '/public');
+
     $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+    $uri = rtrim($uri, '/') ?: '/';
 
     if (isset($routes[$uri])) {
-        require $routes[$uri];
-        return;
+
+        // construir ruta segura dentro de /public
+        $file = realpath($baseDir . '/' . $routes[$uri]);
+
+        if ($file && str_starts_with($file, $baseDir)) {
+            require $file;
+            return;
+        }
     }
 
     http_response_code(404);
 
-    if ($notFound && file_exists($notFound)) {
-        require $notFound;
-        return;
+    if ($notFound) {
+        $file = realpath($baseDir . '/' . $notFound);
+
+        if ($file && str_starts_with($file, $baseDir)) {
+            require $file;
+            return;
+        }
     }
 
     echo "404";
+}
+
+function SQLS($db, $table, $columns = '*', $where = []){
+
+    $sql = "SELECT $columns FROM $table";
+    $params = [];
+
+    if (!empty($where)) {
+        $conditions = [];
+
+        foreach ($where as $key => $value) {
+            $conditions[] = "$key = :$key";
+            $params[":$key"] = $value;
+        }
+
+        $sql .= " WHERE " . implode(' AND ', $conditions);
+    }
+
+    $query = $db->prepare($sql);
+    $query->execute($params);
+
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function SQLI($db, $table, $data = []){
+
+    $columns = implode(', ', array_keys($data));
+    $placeholders = ':' . implode(', :', array_keys($data));
+
+    $sql = "INSERT INTO $table ($columns) VALUES ($placeholders)";
+
+    $query = $db->prepare($sql);
+    $query->execute($data);
+
+    return $db->lastInsertId();
+}
+
+function SQLU($db, $table, $data = [], $where = []){
+
+    $set = [];
+    $params = [];
+
+    foreach ($data as $key => $value) {
+        $set[] = "$key = :set_$key";
+        $params[":set_$key"] = $value;
+    }
+
+    $sql = "UPDATE $table SET " . implode(', ', $set);
+
+    if (!empty($where)) {
+        $conditions = [];
+
+        foreach ($where as $key => $value) {
+            $conditions[] = "$key = :where_$key";
+            $params[":where_$key"] = $value;
+        }
+
+        $sql .= " WHERE " . implode(' AND ', $conditions);
+    }
+
+    $query = $db->prepare($sql);
+    $query->execute($params);
+
+    return $query->rowCount();
+}
+
+function SQLD($db, $table, $where = []){
+
+    $sql = "DELETE FROM $table";
+    $params = [];
+
+    if (!empty($where)) {
+        $conditions = [];
+
+        foreach ($where as $key => $value) {
+            $conditions[] = "$key = :$key";
+            $params[":$key"] = $value;
+        }
+
+        $sql .= " WHERE " . implode(' AND ', $conditions);
+    }
+
+    else if (empty($where)) {
+        throw new Exception("DELETE sin WHERE no permitido");
+    }
+
+    $query = $db->prepare($sql);
+    $query->execute($params);
+
+    return $query->rowCount();
 }
