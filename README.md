@@ -1,41 +1,40 @@
 # Modules.mod.php
 
-Mini librería PHP con funciones rápidas para HTML, formularios, utilidades visuales, seguridad y helpers JavaScript.
+Mini librería PHP para desarrollo rápido con funciones para HTML, utilidades, seguridad, router y base de datos (PDO).
 
 **Archivo principal:** `Modules.mod.php`
-**Versión:** `1.0.0`
+**Versión actual:** `v1.2.4t`
+**Autor:** Robtob12
 
 ---
 
-# Instalación
+# 🚀 Instalación
 
 ## Método 1 — Git Clone
 
 ```bash
-git clone https://github.com/TUUSUARIO/modules-mod.git
+git clone https://github.com/Robtob12/Module-PHP-Mods.git
 ```
 
-Luego incluye el archivo en tu proyecto:
-
 ```php
-require_once("modules-mod/Modules.mod.php");
-```
-
-## Método 2 — Descargar ZIP
-
-1. Abre el repositorio en GitHub.
-2. Haz clic en **Code**.
-3. Selecciona **Download ZIP**.
-4. Extrae la carpeta.
-5. Incluye el archivo:
-
-```php
-require_once("modules-mod/Modules.mod.php");
+require_once("Module-PHP-Mods/Modules.mod.php");
 ```
 
 ---
 
-# Inicio rápido
+## Método 2 — Descargar ZIP
+
+1. Descargar desde GitHub
+2. Extraer
+3. Incluir en tu proyecto:
+
+```php
+require_once("Modules.mod.php");
+```
+
+---
+
+# ⚡ Inicio rápido
 
 ```php
 <?php
@@ -44,268 +43,249 @@ require_once("Modules.mod.php");
 INIT();
 VERSION();
 
-echo BOLD("Hola mundo");
-echo INPUT("text", "user", ["id","usuario"], "Tu nombre");
+echo H1("Hola mundo");
+echo BOLD("Texto en negrita");
 ```
 
 ---
 
-# Funciones disponibles
-
-## Sistema
-
-### INIT()
-
-Comprueba que el módulo está activo.
-
-### VERSION()
-
-Muestra la versión actual.
+# 📦 Funciones disponibles
 
 ---
 
-## Texto y formato
+## 🧠 Sistema
 
-### BOLD()
-
-Texto en negrita.
-
-### ITAL()
-
-Texto en cursiva.
-
-### UNDER()
-
-Texto subrayado.
-
-### FONT($text, $font)
-
-Texto con fuente personalizada.
+* `INIT()` → Verifica que el módulo está activo
+* `VERSION()` → Muestra información del módulo
 
 ---
 
-## HTML Helpers
+## ✍️ Texto
 
-### A($href, $text, $target)
-
-Crear enlaces.
-
-### H1($text, $class)
-
-Título H1.
-
-### DIV($content, $class)
-
-Contenedor div.
-
-### SPAN($class, $content)
-
-Etiqueta span.
-
-### BUTTON($text, $onclick, $class)
-
-Botón HTML.
-
-### IMG($src, $class, $alt)
-
-Imagen.
-
-### INLIST($type, $items)
-
-Listas `ul` / `ol`.
+* `BOLD($text)`
+* `ITAL($text)`
+* `UNDER($text)`
+* `FONT($text, $font)`
 
 ---
 
-## Formularios
+## 🧱 HTML Helpers
 
-### INPUT($type, $name, $attrs, $placeholder, $value)
+* `H1() ... H6()`
+* `P()`
+* `DIV()`
+* `SPAN()`
+* `A()`
+* `IMG()`
+* `NAV()`
+* `SECTION()`
+* `HERO()`
+* `BR()`
 
-Genera inputs dinámicos.
+---
 
-Ejemplo:
+## 📋 Listas
 
 ```php
-echo INPUT("email", "correo", ["class","campo"], "Correo");
+INLIST("mi-clase", "ul", ["uno", "dos"]);
 ```
 
 ---
 
-## Componentes visuales
+## 🧾 Formularios
 
-### CLOCK($class = "")
+* `INPUT()`
+* `BTN()`
 
-Reloj en tiempo real. La clase CSS es opcional para estilizarlo.
+---
+
+## 🎨 CSS
 
 ```php
-CLOCK("mi-reloj");
+CSS("styles.css");
 ```
 
 ---
 
-## Seguridad
+## 🔤 Lorem Ipsum
 
-### HTML($text)
-
-Escapa caracteres especiales.
-
-### AUTH_EMAIL($email)
-
-Valida formato de email.
-
-### HASTD($password)
-
-Hash con algoritmo por defecto.
-
-### HASTB($password)
-
-Hash con bcrypt.
+```php
+LOREM(20);
+```
 
 ---
 
-## Navegación / JavaScript
+## ⏰ Timer
 
-### GO($url)
-
-Redirección HTTP.
-
-### ALERT($msg)
-
-Muestra `alert()`.
-
-### CONSOLE($data)
-
-Envía datos a `console.log()`.
-
-### RELOAD()
-
-Recarga la página.
+```php
+TIMER("reloj");
+```
 
 ---
 
-## Utilidades
+## 🔒 Seguridad
 
-### TODAY()
-
-Fecha actual `Y-m-d`.
-
-### RANDOM($min, $max)
-
-Número aleatorio seguro.
-
-### LOREM($target)
-
-Genera texto lorem ipsum.
+* `HTML()` → Escapar HTML
+* `AUTH_EMAIL()` → Validar email
+* `HASTD()` → Hash seguro
+* `HASTB()` → Hash bcrypt
 
 ---
 
-## Matemáticas
+## 🌐 Navegación / JS
 
-### OF($percent, $number)
-
-Obtiene un porcentaje de un número.
-
-### EVEN($n)
-
-Detecta si un número es par.
-
-### PRIME($n)
-
-Detecta si un número es primo.
+* `GO($url)` → Redirección
+* `ALERT($msg)`
+* `CONSOLE($data)`
+* `RELOAD()`
+* `READ()` → Entrada por terminal
 
 ---
 
-## Finanzas
+## 🗄️ Base de datos (PDO)
 
-### INTSIMPLE($capital, $rate, $time)
+### 🔌 Conexión
 
-Interés simple.
-
-### AMOSIMPLE($capital, $rate, $time)
-
-Monto con interés simple.
-
-### INTCOMPOUND($capital, $rate, $time)
-
-Interés compuesto.
-
-### PROFIT($income, $cost)
-
-Ganancia neta.
-
-### DISCOUNT($price, $percent)
-
-Aplicar descuento.
-
-### TAX($price, $percent)
-
-Aplicar impuesto.
-
-### SAVEMONEY($goal, $months)
-
-Ahorro mensual necesario.
+```php
+$db = CPDO("localhost", "test", "root", "");
+```
 
 ---
 
-## Router
+### 🔍 SELECT
 
-### ROUTER($routes, $notFound)
+```php
+SQLS($db, "usuarios", "*", ["id" => 1]);
+```
 
-Router simple basado en rutas.
+---
+
+### ➕ INSERT
+
+```php
+SQLI($db, "usuarios", [
+    "nombre" => "Juan",
+    "edad" => 25
+]);
+```
+
+---
+
+### ✏️ UPDATE
+
+```php
+SQLU($db, "usuarios",
+    ["edad" => 30],
+    ["id" => 1]
+);
+```
+
+---
+
+### ❌ DELETE
+
+```php
+SQLD($db, "usuarios", ["id" => 1]);
+```
+
+⚠️ Seguridad:
+No permite `DELETE` sin `WHERE`.
+
+---
+
+## 🌍 Router seguro
 
 ```php
 ROUTER([
-  "/" => "pages/home.php",
-  "/about" => "pages/about.php"
+    "/" => "home.php",
+    "/about" => "about.php"
 ], "404.php");
 ```
 
----
+### ✔ Características
 
-# Ejemplo completo
+* Solo permite archivos dentro de `/public`
+* Previene acceso a rutas externas (`../`)
+* No afecta `$_GET`
 
-```php
-<?php
-require_once("Modules.mod.php");
+Ejemplo:
 
-echo H1("Hola");
-echo DIV(BOLD("Bienvenido"), "box");
-echo INPUT("text", "user", ["id","usuario"], "Nombre");
-echo BUTTON("Enviar", "alert('OK')", "btn");
-CLOCK("clock");
+```
+/user?id=5
 ```
 
+✔ Funciona correctamente dentro del archivo
+
 ---
 
-# Estructura del proyecto
+## 📅 Utilidades
 
-```text
-modules-mod/
+* `TODAY()` → Fecha actual
+* `RANDOM($min, $max)`
+
+---
+
+## 🔢 Matemáticas
+
+* `OF($percent, $number)`
+* `EVEN($n)`
+* `PRIME($n)`
+* `AREA($x, $y)`
+* `CRICLE($r)`
+* `RADIO($d)`
+* `DIAMETRO($r)`
+
+---
+
+## 💰 Finanzas
+
+* `INTSIMPLE()`
+* `AMOSIMPLE()`
+* `INTCOMPOUND()`
+* `PROFIT()`
+* `DISCOUNT()`
+* `TAX()`
+* `SAVEMONEY()`
+
+---
+
+# 📁 Estructura
+
+```
+Module-PHP-Mods/
 ├── Modules.mod.php
 └── README.md
 ```
 
 ---
 
-# Próximas mejoras sugeridas
+# ⚠️ Notas importantes
 
-* SELECT()
-* TEXTAREA()
-* TABLE()
-* CARD()
-* MODAL()
-* CSRF Token
-* Composer package
-* Themes
-* CLI installer
+* Este módulo está diseñado para proyectos rápidos (no es un framework)
+* No incluye MVC ni ORM completo
+* Ideal para prototipos y herramientas internas
 
 ---
 
-# Licencia
+# 🛠 Próximas mejoras
+
+* `SELECT avanzado (LIKE, >, <)`
+* `TEXTAREA()`
+* `TABLE()`
+* `MODAL()`
+* `CSRF Token`
+* Soporte Composer
+* Sistema de plantillas
+
+---
+
+# 📜 Licencia
 
 MIT
 
 ---
 
-# Autor
+# 👨‍💻 Autor
 
-Librería modular PHP para acelerar proyectos rápidos.
+**Robtob12**
+Mini librería PHP para acelerar desarrollo sin frameworks.
